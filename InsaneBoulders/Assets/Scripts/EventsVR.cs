@@ -24,6 +24,7 @@ public class EventsVR : MonoBehaviour
     {
         textLives.text = lives + " lives left";
         textEvent.enabled = false;
+        gameObject.layer = 9;
 
     }
 
