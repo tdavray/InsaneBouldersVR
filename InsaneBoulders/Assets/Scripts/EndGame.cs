@@ -18,10 +18,19 @@ public class EndGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject[] targets = GameObject.FindGameObjectsWithTag("target");
+
+        GameObject[] targetsContainers = GameObject.FindGameObjectsWithTag("TargetsContainer");
+        int countTargets = 0;
+        foreach(GameObject tc in targetsContainers)
+        {
+            Transform[] childrenTransforms = tc.GetComponentsInChildren<Transform>(true);
+            countTargets += childrenTransforms.Length - 1;
+        }
+        //GameObject[] targets = GameObject.FindGameObjectsWithTag("target");
+        
         float curr = GameObject.Find("Timer").GetComponent<Timer>().currentTime;
         float lives = GameObject.Find("OVRPlayerController").GetComponent<EventsVR>().lives;
-        if (((targets.Length > 0 && curr <= 0) || lives <= 0) && !over)
+        if (((countTargets > 0 && curr <= 0) || lives <= 0) && !over)
         {
             over = true;
             LoseSound.Play();
@@ -29,7 +38,7 @@ public class EndGame : MonoBehaviour
             win = false;
             setEndGame(win, "You Lose");
         }
-        else if(targets.Length <= 0 && curr > 0 && !over)
+        else if(countTargets <= 0 && curr > 0 && !over)
         {
             over = true;
             WinSound.Play();

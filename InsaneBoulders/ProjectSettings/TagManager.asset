@@ -9,6 +9,7 @@ TagManager:
   - event
   - wall
   - Portal Ignore
+  - TargetsContainer
   layers:
   - Default
   - TransparentFX

@@ -23,9 +23,14 @@ public class Dimension : MonoBehaviour {
 	[HideInInspector]
 	public Camera cam;
 
+	//[HideInInspector]
+	public bool currentDimention = false;
+
 	private Dictionary<int, int> layerSwitchedChildren;
 
     private bool mainCameraNeedsSetup = true;
+
+	public bool night = false;
 
 	void Awake() {
 		connectedPortals = new List<Portal> ();
@@ -51,7 +56,9 @@ public class Dimension : MonoBehaviour {
         foreach (Camera camera in Camera.allCameras) {
             if (this.initialWorld)
             {
-                CameraExtensions.LayerCullingShow(camera, layer);
+				currentDimention = true;
+
+				CameraExtensions.LayerCullingShow(camera, layer);
                 if (camera.GetComponent<Skybox>())
                 {
                     camera.GetComponent<Skybox>().material = customSkybox;
@@ -100,6 +107,8 @@ public class Dimension : MonoBehaviour {
 	public void SwitchConnectingPortals() {
 		foreach (Portal portal in connectedPortals) {
 			if (portal.ToDimension () == this) {
+				Debug.Log("INN");
+				GameObject.Find("GameManager").GetComponent<DimensionsManager>().UpdateDimentions(this);
 				portal.SwitchPortalDimensions ();
 			}
 		}

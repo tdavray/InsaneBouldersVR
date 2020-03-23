@@ -13,25 +13,29 @@ public class MoveAround : MonoBehaviour
     private bool isRotationRight = false;
     private bool isRotationLeft = false;
     private bool isMoving = false;
+    public bool freeze = false;
 
     // Update is called once per frame
     void Update()
     {
-        if(isWandering == false)
+        if (!freeze)
         {
-            StartCoroutine(Wander());
-        }
-        if(isRotationRight == true)
-        {
-            transform.Rotate(transform.up * Time.deltaTime * rotationSpeed);
-        }
-        if (isRotationLeft == true)
-        {
-            transform.Rotate(transform.up * Time.deltaTime * -rotationSpeed);
-        }
-        if (isMoving == true)
-        {
-            transform.position += transform.forward * movingSpeed * Time.deltaTime;
+            if (isWandering == false)
+            {
+                StartCoroutine(Wander());
+            }
+            if (isRotationRight == true)
+            {
+                transform.Rotate(transform.up * Time.deltaTime * rotationSpeed);
+            }
+            if (isRotationLeft == true)
+            {
+                transform.Rotate(transform.up * Time.deltaTime * -rotationSpeed);
+            }
+            if (isMoving == true)
+            {
+                transform.position += transform.forward * movingSpeed * Time.deltaTime;
+            }
         }
     }
 
@@ -39,7 +43,6 @@ public class MoveAround : MonoBehaviour
     {
         if (other.tag == "wall")
         {
-            Debug.Log("ROTATE");
             transform.RotateAround(transform.position, transform.up, 180f);
         }
     }

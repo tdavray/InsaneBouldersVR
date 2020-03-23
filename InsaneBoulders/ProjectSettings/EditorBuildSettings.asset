@@ -20,10 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Level3VR.unity
     guid: 3b4c5758b6a402a4bbf69d2d0ca85003
-  - enabled: 1
-    path: Assets/Scenes/PortalLevelVR.unity
-    guid: 636231ee733dab042a63011ac7d4c4e1
   - enabled: 0
-    path: Assets/Pocket Portal VR/Demo/Scenes/RiftOVRDemo.unity
-    guid: 557efbab52c2b4b4cbcdb3187074ba45
+    path: Assets/Scenes/DimentionsLevelVR.unity
+    guid: 636231ee733dab042a63011ac7d4c4e1
+  - enabled: 1
+    path: Assets/Scenes/DimentionsLevelVRB.unity
+    guid: cf6a661ce5347fb41b3a08b6f40e521b
   m_configObjects: {}
