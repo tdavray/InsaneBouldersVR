@@ -43,7 +43,8 @@ public class MoveAround : MonoBehaviour
     {
         if (other.tag == "wall")
         {
-            transform.RotateAround(transform.position, transform.up, 180f);
+            int rotation = Random.Range(150, 210);
+            transform.RotateAround(transform.position, transform.up, rotation);
         }
     }
 
